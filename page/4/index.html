@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="计数,多项式," />
+  <meta name="keywords" content="数学,单位根反演,FFT/NTT," />
 
 
 
@@ -75,18 +75,18 @@
 
 
 
-<meta name="description" content="题目大意题目的模型是有两棵$n​$个点树，求$y^{|T  1 \cap T  2 |}​$。（$T  1,T  2​$分别是两棵树的边集。） 有三个部分，分别是：  给定两棵树求答案。 给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。 只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）  题解我们一次考虑每个部分的做法。 给定两棵树这部分只有">
-<meta name="keywords" content="计数,多项式">
+<meta name="description" content="题目大意考虑现在有$n \times (L+1)$个点，每个点用一个坐标$(x,y)$表示。（$x \in [0,L],y \in [1,n]$） 一开始我们在$(0,x)$处，接下来每次可以跳若干步，从$(a,x)$跳到$(b,y)$（$a &amp;lt; b$）的方案数为$w[a][b]$，求在跳了$x$次后到达$(L,y)$的方案数，$x​$满足$x \bmod d=k$，对于$k\in[0,t-">
+<meta name="keywords" content="数学,单位根反演,FFT&#x2F;NTT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[WC2019] 数树">
-<meta property="og:url" content="https://zhang-rq.github.io/2019/04/09/WC2019-数树/index.html">
+<meta property="og:title" content="HNOI2019 白兔之舞">
+<meta property="og:url" content="https://zhang-rq.github.io/2019/07/09/HNOI2019白兔之舞/index.html">
 <meta property="og:site_name" content="Loner">
-<meta property="og:description" content="题目大意题目的模型是有两棵$n​$个点树，求$y^{|T  1 \cap T  2 |}​$。（$T  1,T  2​$分别是两棵树的边集。） 有三个部分，分别是：  给定两棵树求答案。 给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。 只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）  题解我们一次考虑每个部分的做法。 给定两棵树这部分只有">
+<meta property="og:description" content="题目大意考虑现在有$n \times (L+1)$个点，每个点用一个坐标$(x,y)$表示。（$x \in [0,L],y \in [1,n]$） 一开始我们在$(0,x)$处，接下来每次可以跳若干步，从$(a,x)$跳到$(b,y)$（$a &amp;lt; b$）的方案数为$w[a][b]$，求在跳了$x$次后到达$(L,y)$的方案数，$x​$满足$x \bmod d=k$，对于$k\in[0,t-">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2021-03-07T12:19:40.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[WC2019] 数树">
-<meta name="twitter:description" content="题目大意题目的模型是有两棵$n​$个点树，求$y^{|T  1 \cap T  2 |}​$。（$T  1,T  2​$分别是两棵树的边集。） 有三个部分，分别是：  给定两棵树求答案。 给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。 只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）  题解我们一次考虑每个部分的做法。 给定两棵树这部分只有">
+<meta name="twitter:title" content="HNOI2019 白兔之舞">
+<meta name="twitter:description" content="题目大意考虑现在有$n \times (L+1)$个点，每个点用一个坐标$(x,y)$表示。（$x \in [0,L],y \in [1,n]$） 一开始我们在$(0,x)$处，接下来每次可以跳若干步，从$(a,x)$跳到$(b,y)$（$a &amp;lt; b$）的方案数为$w[a][b]$，求在跳了$x$次后到达$(L,y)$的方案数，$x​$满足$x \bmod d=k$，对于$k\in[0,t-">
 
 
 
@@ -114,7 +114,7 @@
 
 
 
-  <link rel="canonical" href="https://zhang-rq.github.io/2019/04/09/WC2019-数树/"/>
+  <link rel="canonical" href="https://zhang-rq.github.io/2019/07/09/HNOI2019白兔之舞/"/>
 
 
 
@@ -257,6 +257,179 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2018/01/30/hihoCoder后缀自动机五题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang_RQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon-big.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loner">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/30/hihoCoder后缀自动机五题/" itemprop="url">hihoCoder后缀自动机五题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-30T20:59:23+08:00">2018-01-30</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/30/hihoCoder后缀自动机五题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/30/hihoCoder后缀自动机五题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="重复旋律5"><a href="#重复旋律5" class="headerlink" title="重复旋律5"></a>重复旋律5</h2><ol>
+<li><p>链接</p>
+<p> <a href="http://hihocoder.com/problemset/problem/1445" target="_blank" rel="noopener">后缀自动机二·重复旋律5</a></p>
+</li>
+<li><p>题意</p>
+<p> 给定一个串，求这个串的本质不同的子串个数。</p>
+</li>
+<li><p>题解</p>
+<ol>
+<li><p>后缀数组</p>
+<p>答案就是 $ \sum_{i=1}^{n} n-sa[i]-height[i]+1 $</p>
+</li>
+<li><p>后缀自动机</p>
+<p>题目所求即 $ \sum_{i=1}^{cnt} siz[i] $</p>
+<p>按照逆拓扑序递推一遍即可。</p>
+</li>
+</ol>
+</li>
+<li><p>核心代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> mxval=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)</span><br><span class="line">        sum[mx[i]]++,mxval=max(mxval,mx[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=mxval;i++)</span><br><span class="line">        sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)</span><br><span class="line">        tp[sum[mx[i]]--]=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=cnt;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        siz[par[tp[i]]]+=siz[tp[i]];</span><br><span class="line">        ans[mx[tp[i]]]=max(ans[mx[tp[i]]],siz[tp[i]]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">        ans[i]=max(ans[i],ans[i+<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="未完待补"><a href="#未完待补" class="headerlink" title="(未完待补)"></a>(未完待补)</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -970,159 +1143,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2018/01/13/BZOJ4199&&洛谷2178 [NOI2015]品酒大会/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang_RQ">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/favicon-big.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Loner">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/13/BZOJ4199&&洛谷2178 [NOI2015]品酒大会/" itemprop="url">BZOJ4199&&洛谷2178 [NOI2015]品酒大会</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T16:22:17+08:00">2018-01-13</time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/题解/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/01/13/BZOJ4199&&洛谷2178 [NOI2015]品酒大会/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/01/13/BZOJ4199&&洛谷2178 [NOI2015]品酒大会/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">一道后缀数组题</span><br><span class="line"></span><br><span class="line">先求出height，然后从大到小枚举每个height。</span><br><span class="line"></span><br><span class="line">然后对于每个height值，两端的集合中任意一对后缀都是这个height。</span><br><span class="line"></span><br><span class="line">我们统计答案之后合并两端的集合，用并查集维护即可。</span><br><span class="line"></span><br><span class="line">因为我们是从大到小枚举的Height，所以</span><br></pre></td></tr></table></figure>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bitset&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">300010</span>;</span><br><span class="line"><span class="keyword">const</span> ll INF=(<span class="number">1l</span>l&lt;&lt;<span class="number">62</span>);</span><br><span class="line"><span class="keyword">char</span> str[MAXN];</span><br><span class="line"><span class="keyword">int</span> sa[MAXN],Rank[MAXN],tp[MAXN],height[MAXN],sum[MAXN];</span><br><span class="line"><span class="keyword">int</span> fa[MAXN],siz[MAXN],maxv[MAXN],minv[MAXN];</span><br><span class="line"><span class="keyword">int</span> n,val[MAXN];</span><br><span class="line">ll ans2[MAXN],ans1[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_sa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">127</span>;</span><br><span class="line">    <span class="keyword">int</span> p=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) tp[i]=i,Rank[i]=str[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) sum[i]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) sum[Rank[tp[i]]]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--) sa[sum[Rank[tp[i]]]--]=tp[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> len=<span class="number">1</span>;p&lt;n;m=p,len&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        p=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n-len+<span class="number">1</span>;i&lt;=n;i++) tp[++p]=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="keyword">if</span>(sa[i]&gt;len) tp[++p]=sa[i]-len;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) sum[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) sum[Rank[tp[i]]]++;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--) sa[sum[Rank[tp[i]]]--]=tp[i];</span><br><span class="line">        swap(Rank,tp);</span><br><span class="line">        Rank[sa[<span class="number">1</span>]]=<span class="number">1</span>;p=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">            Rank[sa[i]]=(tp[sa[i<span class="number">-1</span>]]==tp[sa[i]]&amp;&amp;tp[sa[i<span class="number">-1</span>]+len]==tp[sa[i]+len])?p:++p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> lst=<span class="number">0</span>,j;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;height[Rank[i++]]=lst)</span><br><span class="line">        <span class="keyword">for</span>(lst=lst?lst<span class="number">-1</span>:lst,j=sa[Rank[i]<span class="number">-1</span>];str[j+lst]==str[i+lst];++lst);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x==fa[x]?x:fa[x]=find(fa[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(siz[x]&lt;siz[y]) swap(x,y);  <span class="comment">//  y-&gt;x</span></span><br><span class="line">    maxv[x]=max(maxv[x],maxv[y]);</span><br><span class="line">    minv[x]=min(minv[x],minv[y]);</span><br><span class="line">    siz[x]+=siz[y];</span><br><span class="line">    fa[y]=x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(height[x]!=height[y])</span><br><span class="line">        <span class="keyword">return</span> height[x]&gt;height[y];</span><br><span class="line">    <span class="keyword">return</span> x&lt;y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,str+<span class="number">1</span>);</span><br><span class="line">    get_sa();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;val[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) siz[i]=<span class="number">1</span>,fa[i]=i,maxv[i]=minv[i]=val[sa[i]];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++) tp[i]=i+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) ans2[i]=-INF;</span><br><span class="line">    sort(tp+<span class="number">1</span>,tp+n,cmp);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x=find(tp[i]),y=find(tp[i]<span class="number">-1</span>);</span><br><span class="line">        ans1[height[tp[i]]]+=<span class="number">1l</span>l*siz[x]*siz[y];</span><br><span class="line">        ans2[height[tp[i]]]=max(ans2[height[tp[i]]],<span class="number">1l</span>l*maxv[x]*maxv[y]);</span><br><span class="line">        ans2[height[tp[i]]]=max(ans2[height[tp[i]]],<span class="number">1l</span>l*maxv[x]*minv[y]);</span><br><span class="line">        ans2[height[tp[i]]]=max(ans2[height[tp[i]]],<span class="number">1l</span>l*minv[x]*maxv[y]);</span><br><span class="line">        ans2[height[tp[i]]]=max(ans2[height[tp[i]]],<span class="number">1l</span>l*minv[x]*minv[y]);</span><br><span class="line">        merge(x,y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-2</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        ans1[i]+=ans1[i+<span class="number">1</span>],</span><br><span class="line">        ans2[i]=max(ans2[i],ans2[i+<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n<span class="number">-1</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld %lld\n"</span>,ans1[i],ans2[i]==-INF?<span class="number">0</span>:ans2[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1174,7 +1194,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1185,7 +1205,7 @@
                 
                 <div class="site-state-item site-state-categories">
                   
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   
                 </div>
@@ -1196,7 +1216,7 @@
                 
                 <div class="site-state-item site-state-tags">
                   
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -1800,5 +1820,5 @@
   });
   </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</body>
 </html>
