@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="baidu-site-verification" content="KTIrJPu40q" />
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.1" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计数,多项式," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目大意题目的模型是有两棵$n​$个点树，求$y^{|T  1 \cap T  2 |}​$。（$T  1,T  2​$分别是两棵树的边集。） 有三个部分，分别是：  给定两棵树求答案。 给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。 只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）  题解我们一次考虑每个部分的做法。 给定两棵树这部分只有">
+<meta name="keywords" content="计数,多项式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[WC2019] 数树">
+<meta property="og:url" content="https://zhang-rq.github.io/2019/04/09/WC2019-数树/index.html">
+<meta property="og:site_name" content="Loner">
+<meta property="og:description" content="题目大意题目的模型是有两棵$n​$个点树，求$y^{|T  1 \cap T  2 |}​$。（$T  1,T  2​$分别是两棵树的边集。） 有三个部分，分别是：  给定两棵树求答案。 给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。 只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）  题解我们一次考虑每个部分的做法。 给定两棵树这部分只有">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-03-07T12:19:40.613Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[WC2019] 数树">
+<meta name="twitter:description" content="题目大意题目的模型是有两棵$n​$个点树，求$y^{|T  1 \cap T  2 |}​$。（$T  1,T  2​$分别是两棵树的边集。） 有三个部分，分别是：  给定两棵树求答案。 给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。 只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）  题解我们一次考虑每个部分的做法。 给定两棵树这部分只有">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhang-rq.github.io/2019/04/09/WC2019-数树/"/>
+
+
+
+
+
+  <title>Loner</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-112446994-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Loner</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+
+      <li class="menu-item menu-item-canvas-toggle">
+        <a href="javascript:;" rel="section" id="stop-canvas" >
+          <i class="menu-item-icon fa fa-fw fa-stop"></i> <br /> 隐藏背景动画
+        </a>
+        <a href="javascript:;" rel="section" id="play-canvas">
+          <i class="menu-item-icon fa fa-fw fa-play"></i> <br /> 显示背景动画
+        </a>
+      </li>
+
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2019/07/09/HNOI2019白兔之舞/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang_RQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon-big.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loner">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/09/HNOI2019白兔之舞/" itemprop="url">HNOI2019 白兔之舞</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T20:04:21+08:00">2019-07-09</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/07/09/HNOI2019白兔之舞/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/09/HNOI2019白兔之舞/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>考虑现在有$n \times (L+1)$个点，每个点用一个坐标$(x,y)$表示。（$x \in [0,L],y \in [1,n]$）</p>
+<p>一开始我们在$(0,x)$处，接下来每次可以跳若干步，从$(a,x)$跳到$(b,y)$（$a &lt; b$）的方案数为$w[a][b]$，求在跳了$x$次后到达$(L,y)$的方案数，$x​$满足$x \bmod d=k$，对于$k\in[0,t-1]$都输出一个答案。</p>
+<p>给定$n,w[][],L,x,y,d,t$，答案对质数$P$取模，保证有在模$P$意义下的$d$次单位根。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>考虑若对$x$的限制是$x=L$，那么这个问题可以直接使用矩阵快速幂解决。</p>
+<p>加上题目里都明示要用单位根反演了，那我们考虑用单位根反演来解决这个问题。</p>
+<p>我们可以比较容易地想到这个多项式：</p>
+<script type="math/tex; mode=display">
+f(x)=\left( \begin{bmatrix} 1 \ 0 \ 0 \\ 0 \ 1 \ 0 \\ 0 \ 0 \ 1 \end {bmatrix} + Wx \right)^L</script><p>其中，$W$是一个矩阵，数值就是给定的w数组。</p>
+<p>那么我们要求的东西就是这个：</p>
+<script type="math/tex; mode=display">
+Ans_k=\sum_{i=0}^L [x \bmod k=t] [x^i]f(x) \qquad (for \ k \in[0,t-1])</script><p>然后就可以用矩阵乘法求答案了！</p>
+<p>我们考虑使用单位根反演。注意：为了处理不是$d$的整次幂的情况，我们可以直接乘上一个$x^{d-k}$。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ans_k &= \frac{1}{d} \sum_{i=0} ^{d-1} f(\omega_{d}^{i})(\omega_d^{i})^{d-k} \\
+Ans_k &= \frac{1}{d} \sum_{i=0} ^{d-1} \omega_d^{-i\times k} \times f(\omega_{d}^{i})
+\end{aligned}</script><p>注意到：$i \times k= {i +k \choose 2} - {i \choose 2} - {k \choose 2}$。</p>
+<p>代入可得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ans_k = \frac{1}{d} \sum_{i=0} ^{d-1} \omega_d^{ {k \choose 2} + {i \choose 2} - {i+k \choose 2} } \times f(\omega_{d}^{i}) \\
+Ans_k = \frac{\omega_d^{ {k \choose 2} } }{d} \sum_{i=0} ^{d-1} \omega_d^{-{i+k \choose 2} } \times ( f(\omega_{d}^{i}) \times \omega_d^{ {i \choose 2} } ) 
+\end{aligned}</script><p>后面的用矩阵快速幂预处理。</p>
+<p>差一定的卷积，请。</p>
+<p>（要写任意模数卷积。）</p>
+<p>代码请移步Github仓库。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2019/04/09/WC2019-数树/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang_RQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon-big.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loner">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/09/WC2019-数树/" itemprop="url">[WC2019] 数树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T17:10:18+08:00">2019-04-09</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/09/WC2019-数树/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/09/WC2019-数树/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>题目的模型是有两棵$n​$个点树，求$y^{|T <em> 1 \cap T </em> 2 |}​$。（$T <em> 1,T </em> 2​$分别是两棵树的边集。）</p>
+<p>有三个部分，分别是：</p>
+<ul>
+<li>给定两棵树求答案。</li>
+<li>给定一棵树，然后求另一棵树是$n^{n-2}$种情况时的答案和。</li>
+<li>只给一个$n​$，求出两棵树在所有情况下的答案和（共$(n^{n-2})^2​$种情况）</li>
+</ul>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>我们一次考虑每个部分的做法。</p>
+<h2 id="给定两棵树"><a href="#给定两棵树" class="headerlink" title="给定两棵树"></a>给定两棵树</h2><p>这部分只有普及组难度，随便用个$set$记一下就行了。</p>
+<h2 id="给定一棵树"><a href="#给定一棵树" class="headerlink" title="给定一棵树"></a>给定一棵树</h2><p>我们不妨钦定一些$T <em> 1$中的边为必选边，那么考虑$T </em> 2$的方案数是多少（记为$F$）。</p>
+<p>我们发现，加入一些必选边后，$T _ 2$被连成了若干连通块，我们假设形成了$m$个连通块（说明钦定了$n-m$条边）。</p>
+<p>有一个很直观的想法就是这$m$个连通块的生成树个树（即$m^{m-2}$），但是显然算少了很多，因为两个连通块间的边的个数不是$1$，而是两个连通块大小的乘积。</p>
+<p>那么我们不妨从$m^{m-2}$的本质来考虑这件事，众所周知，$m^{m-2}$的来源是$prufer$序列，那我们从$prufer$序列来审视这个问题。</p>
+<p>我们发现，假设一个连通块的出现次数在$prufer$的出现次数为$d <em> i$，它的大小为$siz </em> i$，显然，它的度数为$d <em> i+1$，它对答案有一个$siz </em> i^{d _ i+1}$的乘法贡献。</p>
+<p>我们现在不妨枚举每个连通块在$prufer$序列的出现次数并且枚举$prufer$序列，注意要处理多重集合的排列。</p>
+<p>那么方案数很容易写出：</p>
+<script type="math/tex; mode=display">
+F= m! \sum _ {\sum _ {i=1}^{m} d _ i=m-2} \prod  _ {i=1}^{m} \frac{siz _ i^{d _ i+1}}{d _ i!}</script><p>我们随手化简一下，可以得到</p>
+<script type="math/tex; mode=display">
+F= \prod _ {i=1}^{m} siz _ i \times m! \sum _ {\sum _ {i=1}^{m} d _ i=m-2} \prod  _ {i=1}^{m} \frac{siz _ i^{d _ i}}{d _ i!}</script><p>我们接下来来考虑后面这一坨东西的组合意义，相当于我们先给每个连通块分配了一些位置，然后每个位置可以填$siz <em> i$种数字。那么我们可以直接考虑每个位置能填的数字，显然种类数就是$\sum </em> {i} siz _ i =n$，那么可以进一步化简得到最终形式。</p>
+<script type="math/tex; mode=display">
+F = \prod  _ {i=1} ^{m} siz _ i \times n^{m-2}</script><p>也就是说，我们现在可以暴力枚举边集，然后计算答案</p>
+<script type="math/tex; mode=display">
+Ans = \sum _ {E \subset T _ 1} y^{n-|E|} n^{n-|E|-2} \prod  _ {i=1} ^{n-|E|-2} siz _ i\\
+Ans = y^n n^{n-2} \sum _ {E \subset T _ 1} y^{-|E|} n^{-|E|} \prod  _ {i=1} ^{n-|E|-2} siz _ i</script><p>接下来，为方便起见，我们令$y=y^{-1}$，最后统一乘$y^n$。</p>
+<p>写个暴力，然后发现这玩意并不对，我们冷静分析一下，发现我们钦定出来的边集只是两个边集的交的一个子集，而不是最终的交。</p>
+<p>那么接下来有两种处理方法，容斥和组合恒等式，这里只介绍组合恒等式的处理方法。</p>
+<p>我们发现，我们设最终的交集为$|S|$，若我们钦定的集合的大小为$k$，那么这种大小的连通块对$S$的贡献就是.${|S| \choose k} \times val$。</p>
+<p>我们知道有组合恒等式$y^{k} = \sum \limits  _ {i=0} ^{k} {k \choose i} (y-1) ^ i$。</p>
+<p>那么如果我们将权值$val$设置为$y-1$，再进行刚才的做法，发现每个集合的贡献恰好是$y^k$。</p>
+<p>于是我们得到了一个指数级的做法，枚举边集。我们接下来考虑将复杂度降到$poly(n)$。</p>
+<p>一个很自然的想法就是用树形$dp$来优化上述过程，我们发现，一个点状态只和这个点所在的连通块大小有关。那么可以设$f _ {x,s}$为考虑完以$x$为根的子树后，$x$所在的连通块的大小为$s$。这样，我们在合并儿子时考虑下$x$到儿子的这条边选不选，并且乘上相应的系数（$1$或$y^{-1}n^{-1}$）进行转移即可，使用$siz$优化，复杂度为$\mathcal{O}(n^2)$。</p>
+<p>这个做法的复杂度我们显然无法接受，考虑继续优化。</p>
+<p>我们发现，$\prod{siz _ i}​$的组合意义是从每个连通块分别选出一个点的方案数。那么我们可以这个组合意义设置新的$dp​$状态。</p>
+<p>我们设$f _ {x,0/1}$为考虑完$x$为根的子树，$x$所在连通块是否已经选点了的方案数，转移讨论一下就行了，注意每个点必须要选出一个点。复杂度$\mathcal{O}(n)$。</p>
+<h2 id="给定零棵树"><a href="#给定零棵树" class="headerlink" title="给定零棵树"></a>给定零棵树</h2><p>这里我们继续沿用给定一棵树时的做法。</p>
+<p>我们设$f(E)=\prod  <em>  {i=1} ^{m} siz </em> i \times n^{m-2}$，其中，$E$是一个边集，$m$表示将$E$中的边连接后形成的连通块个数，${siz}$是每个连通块的大小。</p>
+<p>那么我们枚举一个边集$E​$，且这个边集必须是某棵树的边集的子集，那么这个边集对答案的贡献是$f(E)^2 y^{|E|}​$。</p>
+<p>所以答案就是$\sum \limits  _ {E} y^{|E|} f(E)^2 ​$。</p>
+<p>我们不妨枚举$|E|$，我们设$g <em>  i=\sum \limits  </em> {|E|=i} f(E)$，答案可以进一步化简为$\sum \limits  <em>  {i=0}^{n-1} y^i g </em> i$。</p>
+<p>那么我们接下来就要处理${g}$数组了。</p>
+<p>由$f(E)​$的计算式，我们不妨考虑枚举将$E​$中的边连起来后每个连通块的大小${a}​$，然后可以得到以下式子：</p>
+<script type="math/tex; mode=display">
+g _ s = \sum _ {\sum _ {i=1}^{n-s}a _ i=n}\frac{n!}{(n-s)!} \prod _ {i=1}^{n-s} { \frac{a _ i^{a _ i-2}}{a _ i!}} ( \prod  _ {i=1} ^{n-s} a _ i \times n^{n-s-2} )^2</script><p>解释下这个式子是怎么来的：</p>
+<p>首先，我们需要让这些连通块内部都是连通的，就是$\prod \limits  <em>  {i=1}^{n-s} a </em> i^{a <em> i-2}​$，然后，我们将$n​$个点划分到这些集合中，就是多重集合的排列，体现在式子中就是$n! \prod \limits  </em> {i=1}^{n-s} \frac{1}{a _ 1!}​$，最后，这些连通块其实是无序的，但是我们在枚举大小的时候是作为有序的做的，所以我们要除掉$(n-s)!​$，最后那个平方项就是$f(E)^2​$。</p>
+<p>然后我们将这个式子带到答案的式子中，并进行一番化简：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ans &= \sum _ {s=0}^{n-1} \sum _ {\sum _ {i=1}^{n-s}a _ i=n}\frac{n!}{(n-s)!} \prod _ {i=1}^{n-s} { \frac{a _ i^{a _ i-2}}{a _ i!}} ( \prod  _ {i=1} ^{n-s} a _ i \times n^{n-s-2} )^2 \\
+Ans &= \sum _ {s=0}^{n-1} n!\frac{n^{2 * (n-2-s)}}{(n-s)!} \sum  _ {\sum _ {i=1}^{n-s} a _ i = n} \prod _ {i=1}^{n-s} {\frac{a _ i^{a _ i}}{a _ i!}}\\
+Ans &= n! \sum _ {s=0}^{n-1} y^s \frac{n^{2 * (n-2-s)}}{(n-s)!} \sum  _ {\sum _ {i=1}^{n-s} a _ i = n} \prod _ {i=1} ^{n-s} { \frac{a _ i^{a _ i}}{a _ i!}} \\
+Ans &= n! \sum _ {s=1}^{n} y^{(n-s)} \frac{n^{2 * (s-2)}}{s!} \sum  _ {\sum _ {i=1}^{s} a _ i = n} \prod _ {i=1} ^{n-s} { \frac{a _ i^{a _ i}}{a _ i!}} \\
+Ans &= \frac{n!y^n}{n^4} \sum _ {s=1}^{n} y^{-s} \frac{n^{2 * s}}{s!} \sum  _ {\sum _ {i=1}^{s} a _ i = n} \prod _ {i=1} ^{n-s} { \frac{a _ i^{a _ i}}{a _ i!}}
+\end{aligned}</script><p>注意，在第四个式子中，我用将$s$替换为了$n-s$。</p>
+<p>然后我们发现第二个求和号的那个限制很难搞，但观察一下可以发现其实是个$\bf EGF$的形式，我们用$\bf EGF​$来替换第二个求和号部分，并继续化简：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+Ans &= \frac{n!y^n}{n^4} \sum _ {s=1}^{n} y^{-s} \frac{n^{2*s}}{s!} [x^n]  \left( {\sum _ {j \geqslant 1} \frac{j^{j}}{j!}} x^j \right) ^ s\\
+Ans &= \frac{n!y^n}{n^4} [x^n] \sum _ {s=1}^{n} \frac{\left( {\frac{n^2}{y} \sum _ {j \geqslant 1} \frac{j^{j}}{j!}} x^j \right) ^ s}{s!}\\
+Ans &= \frac{n!y^n}{n^4} [x^n] e^{\left( {\frac{n^2}{y} \sum _ {j \geqslant 1} \frac{j^{j}}{j!}} x^j \right)}
+\end{aligned}</script><p>然后写个多项式$\bf Exp$就做完了。</p>
+<p>复杂度：$\mathcal{O}(n \log n)$</p>
+<p><a href="https://github.com/Zhang-RQ/OI_Code/blob/master/LOJ/2983.cpp" target="_blank" rel="noopener">代码</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2019/02/21/CodeForces-98E-Help-Shrek-and-Donkey/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang_RQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon-big.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loner">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/21/CodeForces-98E-Help-Shrek-and-Donkey/" itemprop="url">[CodeForces 98E] Help Shrek and Donkey</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-21T18:56:51+08:00">2019-02-21</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/题解/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/21/CodeForces-98E-Help-Shrek-and-Donkey/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/21/CodeForces-98E-Help-Shrek-and-Donkey/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h1><p>有两个人在玩一个游戏，规则如下：</p>
+<ol>
+<li><p>每个人的手上有一些牌，桌子上有一张牌，每个人只能看到自己手上的牌。（桌子上的看不到）</p>
+</li>
+<li><p>每张牌都不一样。</p>
+</li>
+<li><p>两个人轮流进行如下两个操作之一：</p>
+<ul>
+<li><p>猜桌子上的那张牌是什么，若猜对了，即获得胜利，否则算输掉比赛。</p>
+</li>
+<li><p>询问对方手中有没有一张牌，对方必须如实回答。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>现在假设两个人都会执行最优策略，给定先后手的牌数$n,m$，询问两个人的胜率。</p>
+<p>$n,m \leqslant 1000$</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>不难发现，一个人若是进行询问操作，则有两种问法：</p>
+<ol>
+<li><p>询问自己手上没有的牌。（我们记这种询问为诚实的询问）</p>
+</li>
+<li><p>询问自己手上有的牌。（我们记这种询问为欺骗的询问）</p>
+</li>
+</ol>
+<p>因为一个比较显然的思路是每次询问是问自己手上没有的牌（这样才能获得更多的信息）</p>
+<p>然而我没也可以询问自己手上有的牌来误导对方自己手上没有这张牌，然后对方也没有这张牌的话就会认为桌子上是这张牌并猜是这张牌，然后他就输了。</p>
+<p>然后对方也可以猜我这次的询问是不是诚实的询问（我们记为是否相信）。</p>
+<h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>我们设$f(n,m)$为先手有$n$张牌，后手有$m$张牌时先手的胜率。</p>
+<p>从刚才的分析中我们可以根据询问的诚实与否和是否相信来分为4种情况。</p>
+<h2 id="情况的具体分析"><a href="#情况的具体分析" class="headerlink" title="情况的具体分析"></a>情况的具体分析</h2><h3 id="1-先手进行诚实询问，后手相信这次询问。"><a href="#1-先手进行诚实询问，后手相信这次询问。" class="headerlink" title="1. 先手进行诚实询问，后手相信这次询问。"></a>1. 先手进行诚实询问，后手相信这次询问。</h3><p>那么会有以下两种情况：</p>
+<ol>
+<li>$\frac{1}{m+1}$的概率猜到桌子上的牌，那么后手获胜（先手已经进行了操作，而后手已经知道了问的那张牌自己没有同时对方也没有，也就是桌子上的牌），对$f(n,m)$的贡献为$0$。</li>
+<li>$\frac{m}{m+1}$的概率猜到后手手上的牌，那么先手知道了后手有问的那张牌（相当于后手失去了一张牌），后手知道了先手没有问的那张牌（没有得到新的信息），对$f(n,m)$的贡献是$\frac{m}{m+1} \times (1-f(m-1,n))$。（因为接下来先后手互换）</li>
+</ol>
+<h3 id="2-先手进行诚实询问，后手不相信这次询问。"><a href="#2-先手进行诚实询问，后手不相信这次询问。" class="headerlink" title="2.先手进行诚实询问，后手不相信这次询问。"></a>2.先手进行诚实询问，后手不相信这次询问。</h3><p>会出现以下两种情况：</p>
+<ol>
+<li>$\frac{1}{m+1}$的概率猜到桌子上的牌，那么后手会认为这张桌子上的牌会在先手的手中，也就是后手必败，对$f(n,m)$的贡献是$\frac{1}{m+1}$。</li>
+<li>$\frac{m}{m+1}$的概率猜到后手手上的牌，那么后手肯定会相信这次询问，那么对答案的贡献就和上面一样了，即为$\frac{m}{m+1} \times (1-f(m-1,n))$。</li>
+</ol>
+<h3 id="3-先手进行欺骗询问，后手相信这次询问。"><a href="#3-先手进行欺骗询问，后手相信这次询问。" class="headerlink" title="3.先手进行欺骗询问，后手相信这次询问。"></a>3.先手进行欺骗询问，后手相信这次询问。</h3><p>那么后手就中招了，自己手上没有那张牌，且认为先手手上也没有问的那张牌，那么就会认为那张牌就是桌子上的牌，这样先手就会必胜，对$f(n,m)$的贡献是$1$。</p>
+<h3 id="4-先手进行欺骗询问，后手不相信这次询问。"><a href="#4-先手进行欺骗询问，后手不相信这次询问。" class="headerlink" title="4.先手进行欺骗询问，后手不相信这次询问。"></a>4.先手进行欺骗询问，后手不相信这次询问。</h3><p>那么后手就会多知道先手手的一张牌（相当于先手失去了一张牌），对$f(n,m)$的贡献是$1-f(m,n-1)$。</p>
+<h2 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h2><p>不难发现，这是一种混合策略的博弈游戏，就需要纳什均衡的那一套理论。</p>
+<p>我们不妨假设先手进行诚实询问的概率为$p$，则进行欺骗询问的概率就是$1-p$。</p>
+<p>那么后手选相信时对答案的贡献就是$p \times \frac{m}{m+1} \times (1-f(m-1,n)) + (1-p) \times 1$。</p>
+<p>后手选不相信时对答案的贡献就是$p \times (\frac{1}{m+1}+\frac{m}{m+1} \times (1-f(m-1,n))) +(1-p) \times 1-f(m,n-1)$。</p>
+<p>根据纳什均衡的理论，先手的最优决策点就是纳什均衡点，就是无论后手如何选择，答案均不会比当前情况更差的那个$p$，在这里就是令上下式子相等的那个$p$，解下方程就行了。</p>
+<p>最后我们再记忆化一下就可以做到$\mathcal{O}(nm)$了。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> vis[MAXN][MAXN];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">double</span> f[MAXN][MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">double</span> <span class="title">F</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(vis[n][m]) <span class="keyword">return</span> f[n][m];</span><br><span class="line">	vis[n][m]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(!n) <span class="keyword">return</span> f[n][m]=<span class="number">1.0</span>/(m+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span>(!m) <span class="keyword">return</span> f[n][m]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">double</span> k1=<span class="number">1.0</span>*m/(m+<span class="number">1</span>)*(<span class="number">1</span>-F(m<span class="number">-1</span>,n))<span class="number">-1</span>,k2=<span class="number">1.0</span>*m/(m+<span class="number">1</span>)*(<span class="number">1</span>-F(m<span class="number">-1</span>,n))+<span class="number">1.0</span>/(m+<span class="number">1</span>)+F(m,n<span class="number">-1</span>)<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">double</span> x=(-F(m,n<span class="number">-1</span>))/(k1-k2);</span><br><span class="line">	<span class="keyword">return</span> f[n][m]=x*(<span class="number">1.0</span>*m/(m+<span class="number">1</span>)*(<span class="number">1</span>-F(m<span class="number">-1</span>,n)))+<span class="number">1</span>-x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">double</span> Ans=F(n,m);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;fixed&lt;&lt;setprecision(<span class="number">15</span>)&lt;&lt;Ans&lt;&lt;<span class="string">" "</span>&lt;&lt;<span class="number">1</span>-Ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2018/12/20/多项式全家桶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang_RQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon-big.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loner">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/20/多项式全家桶/" itemprop="url">多项式全家桶</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T21:21:00+08:00">2018-12-20</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/20/多项式全家桶/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/20/多项式全家桶/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引言"><a href="#引言" class="headerlink" title="　引言"></a>　引言</h1><p>众所周知，多项式在OI中是一项很实用的技能，现在将多项式的有关知识总结一下。</p>
+<h1 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h1><ol>
+<li>认识汉字以及常用的基本词汇，如果此项有问题，请移步<a href="http://www.hydcd.com/" target="_blank" rel="noopener">这里</a></li>
+<li>基本数学知识（四则运算，多项式的概念等），如果此项有问题，请移步<a href="http://www.dzkbw.com/books/rjb/xiaoxue-shuxue/" target="_blank" rel="noopener">这里</a></li>
+<li>一些高中数学知识和高数知识（泰勒展开等），如果此项有问题，请自行学习</li>
+<li>FFT、NTT等多项式基本算法</li>
+</ol>
+<h1 id="符号及约定"><a href="#符号及约定" class="headerlink" title="符号及约定"></a>符号及约定</h1><ol>
+<li>若不做特殊说明，$n$代指多项式的长度（次数+1）</li>
+<li>$[x^i]f(x)$表示多项式$f(x)$的$i$次项系数。</li>
+<li>若不做特殊说明，本文的运算均在$998244353$或其他费马素数的剩余系下的意义进行。</li>
+</ol>
+<h1 id="多项式加减法"><a href="#多项式加减法" class="headerlink" title="多项式加减法"></a>多项式加减法</h1><p>直接$\mathcal{O}(n)$。</p>
+<h1 id="多项式乘法"><a href="#多项式乘法" class="headerlink" title="多项式乘法"></a>多项式乘法</h1><p>暴力卷积 $\mathcal{O}(n^2)$。</p>
+<p>使用NTT可加速至$\mathcal{O}(n \log n)$</p>
+<h1 id="多项式求逆"><a href="#多项式求逆" class="headerlink" title="多项式求逆"></a>多项式求逆</h1><p>首先，求逆必须要在$\bmod x^k$的意义下进行。</p>
+<p>现在假设我们已知$n$次多项式$f(x)$，现在要求$g(x)$使得$ f(x) \times g(x) \equiv1 \pmod {x^{n+1}}  $。</p>
+<p>我们使用倍增算法。</p>
+<p>假设已知$g_0(x)$使得$f(x) \times g_0(x) \equiv 1 \pmod{x^{\frac{n}{2}}}$，</p>
+<p>现在要求$g(x)$使得$f(x) \times g(x) \equiv 1 \pmod{x^n}$。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\because
+f(x) \times g_0(x) & \equiv 1 & \pmod{x^{\frac{n}{2}}} \\
+f(x) \times g(x) & \equiv 1 & \pmod{x^{\frac{n}{2}}} \\
+\therefore g(x)-g_0(x) & \equiv 0 & \pmod{x^{\frac{n}{2}}}\\
+\text{两边平方，得到} (g(x)-g_0(x))^2 & \equiv 0 & \pmod{x^{n}}\\
+g^2(x)-2g(x)g_0(x)+g_0^2(x) & \equiv 0 & \pmod{x^{n}}\\
+\text{两边同乘f(x)，得到} g(x)-2g_0(x)+g_0^2(x) \times f(x) & \equiv 0 & \pmod{x^{n}}\\
+g(x) & \equiv 2g_0(x)-g_0^2(x) \times f(x) & \pmod{x^{n}}
+\end{aligned}</script><p>于是我们得到了$g(x)  \equiv 2g_0(x)-g_0^2(x)  \pmod{x^{n}}$，就可以倍增了。</p>
+<p>倍增起点是$g(x)=1 \pmod{x}$，倍增终点是$k&gt;n$，$k=2^i$，就是我们在倍增时候的那个次数。</p>
+<p>复杂度：$T(n)=T(\frac{n}{2})+O(n \log n)$得到最终复杂度为$O(n \log n)$</p>
+<h1 id="多项式除法"><a href="#多项式除法" class="headerlink" title="多项式除法"></a>多项式除法</h1><p>多项式除法同样是在$\bmod x^k$的意义下进行的。</p>
+<p>假设我们现在已知$n$次多项式$f(x)$和$m$次多项式$g(x)$，现在请求出多项式$h(x)$和$r(x)$，满足下列两个条件</p>
+<ol>
+<li><p>$f(x) \equiv  g(x) \times h(x) +r(x) \pmod{x^{n+1}}$</p>
+</li>
+<li><p>$h(x)$的次数为$n-m$，$r(x)$的次数小于$m$</p>
+</li>
+</ol>
+<p>我们来考虑一个操作：</p>
+<p>另$g(x)=x^nf(\frac{1}{x})$，则不难发现，其实$g(x)$的系数就是将$f(x)$的系数翻转过来了。</p>
+<p>我们设$\hat f(x)=x^n f(\frac{1}{x})$</p>
+<p>那么我们不妨这样处理：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(x) & \equiv  g(x) \times h(x)  +r(x) & \pmod{x^{n+1}} \\
+f(\frac{1}{x}) & \equiv g(\frac{1}{x}) \times h(\frac{1}{x}) +r(\frac{1}{x}) & \pmod{x^{n+1}} \\
+x^nf(\frac{1}{x}) & \equiv x^n g(\frac{1}{x}) \times h(\frac{1}{x}) + x^nr(\frac{1}{x}) & \pmod{x^{n+1}} \\
+x^nf(\frac{1}{x}) & \equiv x^m g(\frac{1}{x}) \times x^{n-m} h(\frac{1}{x}) + x^nr(\frac{1}{x}) & \pmod{x^{n+1}}  \\
+\hat f(x) & \equiv \hat g(x) \times \hat h(x) +x^{n-m+1} \hat r(x) & \pmod{x^{n+1}} \\
+\text{接下来在} & \bmod x^{n-m+1}\text{的意义下进行}  \\
+\hat f(x) & \equiv \hat g(x) \times \hat h(x) & \pmod{x^{n-m+1}} \\
+\hat h(x) & \equiv \hat f(x) \times \hat g^{-1}(x) & \pmod{x^{n-m+1}} \\
+\end{aligned}</script><p>于是我们就求出来了$h(x)$，那么显然有$r(x) \equiv f(x) - g(x) \times h(x)$</p>
+<p>复杂度显然与多项式求逆一致。</p>
+<h1 id="多项式求导"><a href="#多项式求导" class="headerlink" title="多项式求导"></a>多项式求导</h1><script type="math/tex; mode=display">[x^i]f'(x)=(i+1) \times [x^{i+1}]f(x)</script><p>$\mathcal{O}(n)$</p>
+<h1 id="多项式积分"><a href="#多项式积分" class="headerlink" title="多项式积分"></a>多项式积分</h1><script type="math/tex; mode=display">[x^i]\int f(x) = \frac{1}{i}[x^{i-1}]f(x)</script><p>$\mathcal{O}(n)$</p>
+<h1 id="多项式牛顿迭代"><a href="#多项式牛顿迭代" class="headerlink" title="多项式牛顿迭代"></a>多项式牛顿迭代</h1><p>在这个问题中，我们已知函数$f(x)​$，现在要求函数$g(x)​$，使得$f(g(x)) \equiv 0 \pmod{x^{n+1}}​$。</p>
+<p>我们考虑倍增，假设我们已经求出了$g_0(x)$使得$f( g_0(x) ) \equiv 0 \pmod{x^{\frac{n}{2}}}$</p>
+<p>我们要求$g(x)$使得$f( g(x) ) \equiv 0 \pmod{x^{n}}$</p>
+<p>我们在$g_0(x)$出泰勒展开，我们可以得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(g(x)) & = f(g_0(x)) \\
+& + f'(g_0(x)) (g(x)-g_0(x)) \\
+& + \frac{f''(g_0(x))(g(x)-g_0(x))^2 }{2!}\\
+& + \cdots 
+\end{aligned}</script><p>由于我们在$\bmod x^{n}$的意义下进行，并且$g(x)-g_0(x)$的只有前$\frac{n}{2}$项不为$0$，</p>
+<p>所以从第三项开始的东西都被消去了。</p>
+<p>于是得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(g(x)) & \equiv f(g_0(x)) + f'(g_0(x)) (g(x)-g_0(x)) \pmod {x^n}\\
+0 & \equiv f(g_0(x)) + f'(g_0(x)) (g(x)-g_0(x)) \pmod {x^n}\\
+g(x) & \equiv g_0(x) - \frac{f(g_0(x))}{f'(g_0(x))} \pmod {x^n}\\
+\end{aligned}</script><p>就可以了</p>
+<h1 id="多项式ln"><a href="#多项式ln" class="headerlink" title="多项式ln"></a>多项式ln</h1><p>多项式ln可以看成将多项式带入了麦克劳林级数中。</p>
+<p>具体定义是：</p>
+<script type="math/tex; mode=display">
+\ln (1 - A(z)) = -\sum_{i \geq 1} \frac{A^i(z)}{i}</script><p>也就是说， 我们在计算$\ln f(x)$时，必须满足$[x^0]f(x)=1$。</p>
+<p>接下来考虑怎么做。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g(x) & \equiv \ln(f(x)) \pmod {x^{n+1}} \\
+g'(x) & \equiv \frac{f'(x)}{f(x)} \pmod {x^{n+1}}
+\end{aligned}</script><p>最后再将$g$积分回去即可。</p>
+<p>只需要多项式求逆+多项式求导/积分。</p>
+<p>复杂度$O(n \log n)$</p>
+<h1 id="多项式exp"><a href="#多项式exp" class="headerlink" title="多项式exp"></a>多项式exp</h1><p>多项式exp可以看成将多项式带入了麦克劳林级数中。</p>
+<p>具体定义是：</p>
+<script type="math/tex; mode=display">
+\exp(A(z)) = e^{A(z)} = \sum_{i \geq 0} \frac{A^i(z)}{i!}</script><p>设$g(x)=e^{f(x)}$，两边取对数，得到$\ln g(x)=f(x)$，进一步可得到$ln(g(x))-f(x)=0$</p>
+<p>也就是说，我们现在有函数$h(x)=ln(x)-f(z)$，现在要求$g(x)$使得$h(g(x))=0$。</p>
+<p>显然有$h’(x)=\frac{1}{x}$，也就是说$h’(g(x))=\frac{1}{g(x)}$。</p>
+<p>根据牛顿迭代的理论，这东西显然是要倍增的，并且能够得到递推式</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g(x) & \equiv g_0(x) - \frac{h(g_0(x))}{h'(g_0(x))} & \pmod {x^n} \\
+g(x) & \equiv g_0(x) - h(g_0(x)) \times g_0(x) & \pmod {x^n} \\
+g(x) & \equiv g_0(x) \times (1 - h(g_0(x))) & \pmod {x^n} \\
+\text{带入}&h(x)\text{的定义，得到} \\
+g(x) & \equiv g_0(x) \times (1 - \ln (g_0(x)) + f(x)) & \pmod {x^n} \\
+\end{aligned}</script><p>于是就可以递推了。</p>
+<p>复杂度$O(n \log n)$</p>
+<p>所有代码均可以在<a href="https://github.com/Zhang-RQ/OI_Code/tree/master/%E6%A8%A1%E6%9D%BF" target="_blank" rel="noopener">这里</a>找到</p>
+<h1 id="多项式开根"><a href="#多项式开根" class="headerlink" title="多项式开根"></a>多项式开根</h1><p>算法一：$\sqrt{f(x)}=e^{\frac{1}{2} \ln f(x)}$</p>
+<p>算法二：牛顿迭代</p>
+<p>我们现在要求$g(x)$使得$g^2(x)=f(x)$。</p>
+<p>构造函数$h$满足$h(g(x))=g^2(x)-f(x)$，问题转化为了求$g(x)$满足$h(g(x))=0$。</p>
+<p>假设我们已经得到了$\pmod {x^\frac{n}{2}}$时的答案$g_0(x)$</p>
+<p>直接套用牛顿迭代的式子，我们可以得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g(x) & \equiv g_0(x) - \frac{f(g_0(x))}{f'(g_0(x))} \pmod {x^n} \\
+g(x) & \equiv g_0(x) - \frac{g_0^2(x)-f(x)}{2g_0(x)} \pmod {x^n} \\
+g(x) & \equiv  \frac{g_0^2(x)+f(x)}{2g_0(x)} \pmod {x^n}
+\end{aligned}</script><p>倍增的起点是$n=1$，一般来说，$f(x)$ 的常数项为1或0，否则需要计算二次剩余。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhang-rq.github.io/2018/08/13/单位根反演/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang_RQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/favicon-big.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Loner">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/13/单位根反演/" itemprop="url">单位根反演</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-13T18:45:51+08:00">2018-08-13</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/13/单位根反演/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/08/13/单位根反演/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>假设现在我们要求一个式子 </p>
+<script type="math/tex; mode=display">
+\sum _ {i=0}^{n} {n \choose 2i}</script><p>不妨构造二项式 </p>
+<script type="math/tex; mode=display">
+(1+x)^n=\sum _ {i=0}^{n} {n \choose i} x^i</script><p>我们现在将$x=1$,$x=-1$ 带入，则有 </p>
+<script type="math/tex; mode=display">
+\begin {align}
+2^n &= \sum _ {i=0}^{n} {n \choose i} \\
+0 &= \sum _ {i=0}^{n} (-1)^i {n \choose i}
+\end {align}</script><p>两式相加，则有 </p>
+<script type="math/tex; mode=display">
+2^n=2*\sum _ {i=0}^{\lfloor \frac{n}{2} \rfloor} {n \choose 2i}</script><p>问题已经解决，$Ans=2^{2*n-1}$。 </p>
+<p>那如果我们现在想计算 </p>
+<script type="math/tex; mode=display">
+\sum _ {i=0} ^{n} {n \choose ki}</script><p>该怎么办？ </p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>单位根反演就是做以上工作的东西。 </p>
+<p>简而言之，如果能快速求出某个多项式的点值，那我们就可能能求出$x$的特定倍数幂的系数和。 </p>
+<p>形式化的，我们可以求</p>
+<script type="math/tex; mode=display">
+\sum _ {i=0}^{\lfloor \frac{n}{k} \rfloor} [x^{ik}] f(x)</script><h1 id="知识储备"><a href="#知识储备" class="headerlink" title="知识储备"></a>知识储备</h1><h2 id="单位根"><a href="#单位根" class="headerlink" title="单位根"></a>单位根</h2><p>根据$FFT$的前置知识，我们可以知道，对于一个$n$，若有$x^n-1=0$，则称$x$是$n$次单位根，记为$\omega _ n$。</p>
+<p>单位根在复平面上的分布将单位圆均分为$n$份，在第一象限的最靠近实轴的单位根记为$\omega <em> n^1$，一般也可记为$\omega </em> {n}$。其余的按逆时针排序，分别为$\omega _ n^{2 \cdots n-1}$ </p>
+<p>所以我们不难发现如下几个性质： </p>
+<ol>
+<li><p>$ \omega <em> n^i +\omega </em> n^{i+n/2} (2|n)$ </p>
+</li>
+<li><p>$\omega <em> n^i=\omega </em> n^{i \% n}$ </p>
+</li>
+<li><p>$\omega <em> {kn}^{ki}=\omega </em> {n}^{i}$ </p>
+</li>
+</ol>
+<p>由于性质3的存在，我们可以定义本原单位根。</p>
+<p>本原单位根的定义是：若$\omega,n$满足$\omega^n-1=0$，且$n$是最小满足条件的，则称$\omega$是$n$的本原单位根。</p>
+<p>我们不难发现，对于单位根$\omega <em> {n}^{i}$，若$\gcd(n,i)==1$，则$\omega </em> n^i$一定是n的本原单位根。</p>
+<p>否则，设$d=\gcd(i,n)$，则$\omega <em> {n}^{i}=\omega </em> {n’d}^{i’d}=\omega <em> {n’}^{i’}$，$(\omega </em> {n’}^{i’})^{n’}-1=0$。并不是$n$的本原单位根。</p>
+<p>性质：</p>
+<script type="math/tex; mode=display">
+\forall k,[n \mid k]=\frac{1}{n}\sum _ {i=0}^{n-1} \omega _ {n}^{ik}</script><p>证明：</p>
+<p>若$n \mid k$，则有</p>
+<script type="math/tex; mode=display">
+Ans=\frac{1}{n} \sum _ {i=0}^{n-1} \omega _ {n}^{ink'}=\frac{1}{n}\sum _ {i=0}^{n-1} 1=1</script><p>否则，这玩意是个等比数列求和，根据高中知识，我们有 </p>
+<script type="math/tex; mode=display">
+Ans=\frac{1}{n} \frac{\omega _ {n}^{0}-\omega _ {n}^{nk}}{1-\omega _ {n}^{k}}=0</script><p>得证。 </p>
+<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>现在我们考虑一开始提出的那个问题，求 </p>
+<script type="math/tex; mode=display">
+\sum _ {i=0} ^{n} {n \choose ki}</script><p>这个就相当于在求(设$N=nk$) </p>
+<script type="math/tex; mode=display">
+f(x)=\sum _ {i=0}^{N} {N \choose i} x^i</script><p>的次数为$k$的倍数的项的系数和。 </p>
+<p>我们不妨设 </p>
+<script type="math/tex; mode=display">
+f(x)=\sum _ {i=0}^{N} a _ i x^i<</script><p>那我们只需要求 </p>
+<script type="math/tex; mode=display">
+\begin {align}
+Ans &= \sum _ {i=0}^{N} ([x^i]f(x)) [k \mid i] \\
+ &= \sum _ {i=0}^{N} ([x^i]f(x)) \frac{1}{k} \sum _ {j=0}^{k-1} \omega _ {k}^{ij} \\
+ &= \sum _ {i=0}^{N} ([x^i]f(x)) \frac{1}{k}\sum _ {j=0}^{k-1} (\omega _ {k}^{j})^i \\
+ &= \sum _ {i=0}^{N} a _ i \sum _ {j=0}^{k-1} (\omega _ {k}^{j})^i\\
+ &= \sum _ {j=0}^{k-1}  \sum _ {i=0}^{N}  (\omega _ {k}^{j})^i\\
+ &= \frac{1}{k}\sum _ {j=0}^{k-1} f(\omega _ {k}^{j})
+\end{align}</script><p>即可。 </p>
+<p>同时注意到 </p>
+<script type="math/tex; mode=display">
+f(x)=(x+1)^n</script><h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="LOJ-6485-LJJ-学二项式定理"><a href="#LOJ-6485-LJJ-学二项式定理" class="headerlink" title="[LOJ 6485] LJJ 学二项式定理"></a>[LOJ 6485] LJJ 学二项式定理</h2><p><a href="https://loj.ac/problem/6485" target="_blank" rel="noopener">Link</a></p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定$n,s,a <em> 0,a </em> 1,a <em> 2,a </em> 3$，求 </p>
+<script type="math/tex; mode=display">
+[\sum _ {i=0}^{n} ({n \choose i} s^i a _ {i \bmod4}) ] \bmod 998244353</script><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>我们不妨不关注$a$数组部分，先构造二项式 </p>
+<script type="math/tex; mode=display">
+\begin {align}
+f(x) &=  \sum _ {i=0}^{n} {n \choose i} s^i x^i *1^{n-i} \\
+&= (sx+1)^n
+\end {align}</script><p>现在只要分别求出$f(x)$除$4$余$0 \cdots 3$的系数之和即可，直接套用之前所讲的方法即可。 </p>
+<p>需要注意，在模$P$意义下，设$g$为$P$的原根，则$\omega _ {n}^{1}=g^{\frac{P-1}{n}}$。 </p>
+<p>第二种构造方法： </p>
+<script type="math/tex; mode=display">
+\begin {align}
+f(x) &= \sum _ {i=0}^{n} {n \choose n-i} s^{n-i} x^i  \\
+f(x) &=(s+x)^n
+\end {align}</script><p>注意，这里使用了$n-i$替换了$i$，所以要处理一下$a$数组的下标。 </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/favicon-big.jpg"
+                alt="Zhang_RQ" />
+            
+              <p class="site-author-name" itemprop="name">Zhang_RQ</p>
+              <p class="site-description motion-element" itemprop="description">In solitude, where we are least alone.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://magichut.pw" title="KingSann" target="_blank">KingSann</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+        </div>
+      </section>
+
+      
+
+      
+
+      <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1375203793&auto=0&height=66"></iframe>
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhang_RQ</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.0.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.1"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'w3GmGGsFmoaWyauCLcdFE0th-MdYXbMMI',
+        appKey: 'p3hXGz6tD1h9jePPTj66cGVd',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+
+    <script type="text/javascript">
+  $(document).ready(function() {
+      $("a#play-canvas").hide();
+    $(".menu-item-canvas-toggle a").click(function(){
+      $(".menu-item-canvas-toggle a").toggle();
+      $("body canvas").toggle();
+    });
+  });
+  </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+</html>
